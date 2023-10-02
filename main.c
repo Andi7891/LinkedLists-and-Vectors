@@ -86,15 +86,17 @@ bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value) 
 
   size_t iteration_index = 0;
   do {
+    //Check if our current node is the desired one.
     if (iteration_index == destination_node) {
       current_node->node_content = new_value;
-      return true; //Return success
+      return true; //Return success.
+    //Otherwise, set the current node with the next one.
     } else {
       current_node = current_node->next_ptr;
       iteration_index++;
     }
   } while (current_node != NULL);
-  //If no element with the requested position was found, just return failed operation;
+  //If no element with the requested position was found just return failed operation.
   return false;
 }
 
