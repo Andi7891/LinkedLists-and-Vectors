@@ -13,7 +13,7 @@
 
 /*
  * Conventions:
- * 1.I will use ? when I am not sure about something, or maybe it has a better replace.
+ * 1.We could use (?) when we are not sure about something, or (??) if there is a better word, but we don't know it exactly.
  * 2.To be expanded...
  */
 
