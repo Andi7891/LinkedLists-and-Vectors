@@ -29,7 +29,7 @@ struct Node {
 };
 
 //This function generates a linked list with a specified number of nodes, also the default value
-// of each node is incremented by 0.5f starting from 0.0f.
+//of each node is incremented by 0.5f starting from 0.0f.
 void generate_link_list(Node **head_ptr, size_t number_of_nodes) {
   double initial_value = 0.0f;
 
