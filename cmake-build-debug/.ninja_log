@@ -1,3 +1,19 @@
 # ninja log v5
 0	106	7179715711060573	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
 108	284	7179715712810154	LinkedList_C.exe	db02a2389afa5ee2
+2	160	7179768747723642	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+160	402	7179768750103107	LinkedList_C.exe	db02a2389afa5ee2
+3	84	7179769050510233	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+84	160	7179769051236604	LinkedList_C.exe	db02a2389afa5ee2
+2	85	7179769356242329	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+85	166	7179769357030494	LinkedList_C.exe	db02a2389afa5ee2
+2	94	7179769447101742	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+95	185	7179769447999341	LinkedList_C.exe	db02a2389afa5ee2
+2	82	7179770575646967	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+82	158	7179770576376087	LinkedList_C.exe	db02a2389afa5ee2
+3	79	7179770717357597	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+79	152	7179770718070578	LinkedList_C.exe	db02a2389afa5ee2
+4	81	7179771575747988	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+81	155	7179771576460847	LinkedList_C.exe	db02a2389afa5ee2
+3	83	7179774234081328	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
+83	159	7179774234792854	LinkedList_C.exe	db02a2389afa5ee2
