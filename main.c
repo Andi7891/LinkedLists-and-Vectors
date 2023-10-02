@@ -63,6 +63,7 @@ void generate_link_list(Node **head_ptr, size_t number_of_nodes) {
   current_node->next_ptr = NULL;
 }
 
+//This function prints the entire list.
 void print_linked_list(Node *head_ptr) {
   Node *current_node = head_ptr;
   do {
@@ -72,33 +73,37 @@ void print_linked_list(Node *head_ptr) {
 }
 
 /*
- * The function is not complete and it needs comments, so I just commented it out for the moment.
-bool modify_value_at(Node *head_ptr, size_t final_dest, double value) {
+ * This function modifies content in a specified node.
+ * Return values is used to evaluate the success of the operation.
+ * The function returns true if succeeded and false if not.
+ */
+bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  if (head_ptr == NULL) return false;
+
   Node *current_node = head_ptr;
-  if (final_dest == 0) {
-    head_ptr->node_content = value;
-    return true;
-  } else {
-    size_t current_node = 1;
-    do {
+
+  size_t iteration_index = 0;
+  do {
+    if (iteration_index == destination_node) {
+      current_node->node_content = new_value;
+      return true; //Return success
+    } else {
       current_node = current_node->next_ptr;
-      if (current_node == final_dest) {
-        current_node->node_content = value;
-        return true;
-      }
-      current_node++;
-    } while (current_node->next_ptr != NULL);
-    return false;
-  }
+      iteration_index++;
+    }
+  } while (current_node != NULL);
+  //If no element with the requested position was found, just return failed operation;
+  return false;
 }
-*/
 
 
 int main(void) {
   Node *head_node = NULL;
   generate_link_list(&head_node, 5);
 
-  //if (!modify_value_at(head_node, 5, 10.0)) return -100;
+  if (!modify_value_at(head_node, 3, 10.0)) return -100;
 
   print_linked_list(head_node);
 }
