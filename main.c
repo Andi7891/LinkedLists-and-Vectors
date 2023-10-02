@@ -44,7 +44,6 @@ void generate_link_list(Node **head_ptr, size_t number_of_nodes) {
    * Because of the rule defined before, in the for loop condition, the number_of_nodes variable is subtracted by 1,
    * so this way we take into account the headNode created before.
    */
-
   for (size_t index = 0; index < (number_of_nodes - 1); index++) {
     //The initial value is incremented.
     initial_value += 0.5f;
