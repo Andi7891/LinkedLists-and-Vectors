@@ -1,16 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+/**
+ * The working principle is the following:
+ * headNode/firstNode   nextNode/secondNode
+ * -->[Node]------------>[Node]-->NULL
+ * Each node has a variable, which contains the content of the node, and a pointer to the nextNode
+ */
 
+//I will add many comments, so everyone could understand the idea behind of it
+#include <stdio.h> //Used for printf
+#include <stdlib.h> //Used for malloc
+#include <stdbool.h> //Used for true/false macros and bool type
+
+/*
+ * Conventions: I will use ? when I am not sure about something, or maybe it has a better replace.
+ * To be expanded...
+ */
+
+//Just an alias. Ex: Instead of writing everywhere struct Node* we could use Node*
+//This could be implemented in many ways.
 typedef struct Node Node;
 
+//Defined/Custom/Derived? type.
+//The base declaration and definition of the linked list node.
 struct Node {
-  double node_content;
+  double node_content;  //The content stored in a node.
   Node *next_ptr;
 };
 
+//This function generates a linked list with a specified number of nodes, also the default value
+// of each node is incremented by 0.5f starting from 0.0f
 void generateNodes(Node **head_ptr, size_t number_of_nodes) {
-  double initial_value = 0.0;
+  double initial_value = 0.0f;
   Node *temp_node = (Node *) (malloc(sizeof(Node)));
   *head_ptr = temp_node;
   for (size_t index = 0; index < number_of_nodes; index++) {
