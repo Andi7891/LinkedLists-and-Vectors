@@ -1,4 +1,4 @@
-# Linked List in C #
+# Linked List implemented C #
 ![Layout](LL.png)
 
 **Available functions**
