@@ -87,6 +87,7 @@ void print_linked_list(Node *head_ptr) {
            current_node->prev_ptr,
            current_node->next_ptr,
            current_node->content);
+
     current_node = current_node->next_ptr;
   } while (current_node != nullptr);
 }
