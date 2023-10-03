@@ -1,6 +1,6 @@
 # Linked List implemented in C #
 
-**Available functions**
+**Finished features**
 - **Generate linked list**
 - **Modify element**
 - **Print list**
