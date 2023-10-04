@@ -35,6 +35,15 @@ struct Node {
   Node *prev_ptr;
 };
 
+//Get the last node ptr.
+Node *get_last_node(Node *head_ptr) {
+  Node *current_node = head_ptr;
+  while (current_node->next_ptr != nullptr) {
+    current_node = current_node->next_ptr;
+  }
+  return current_node;
+}
+
 //This function generates a linked list with a specified number of nodes, also the default value
 //of each node is incremented by 0.5f starting from 0.0f.
 void generate_link_list(Node **head_ptr, size_t number_of_nodes) {
@@ -120,24 +129,22 @@ bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value) 
   return false;
 }
 
-/*
 //This function reverses the linked list, it needs only the head_ptr.
 //The function is not expected to fail, thus no return value.
-void reverse_linked_list(Node* head_ptr) {
-  Node* temp_node = nullptr;
-  Node* current_node = head_ptr;
+void reverse_linked_list(Node **head_ptr) {
+  Node *last_node = get_last_node(*head_ptr);
+  Node *current_node = last_node;
 
-  //Get the last node ptr.
-  while (current_node != nullptr) {
-    current_node = current_node->next_ptr;
-  }
+  Node *next_node = nullptr;
 
   //Reverses the list from the end to the beginning.
-  while (current_node != nullptr) {
-
+  while (current_node->next_ptr != nullptr) {
+    next_node = current_node->next_ptr;
+    current_node->next_ptr = current_node->prev_ptr;
+    current_node->prev_ptr = next_node;
   }
+  (*head_ptr) = next_node;
 }
-*/
 
 
 int main(void) {
@@ -145,12 +152,11 @@ int main(void) {
   generate_link_list(&head_node, 5);
 
   if (!modify_value_at(head_node, 3, 10.0)) return -100;
-
   print_linked_list(head_node);
 
   //printf("############REVERSED###########\n");
 
-  //reverse_linked_list(head_node);
+  //reverse_linked_list(&head_node);
 
   //print_linked_list(head_node);
 }
