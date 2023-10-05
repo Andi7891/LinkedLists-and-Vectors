@@ -16,4 +16,15 @@
 
 # Vector structure implemented in C #
 
+Vector Viewer
 https://www.desmos.com/calculator/u8wt5rnw9n
+
+**Finished features**
+- **Add vectors in 2d**
+- **Subtract vectors in 2d**
+- **Absolut value of a vector**
+- **Print vectors with/without precision parameter**
+
+**Not finished**
+- **Dot product**
+- **Cross product**
