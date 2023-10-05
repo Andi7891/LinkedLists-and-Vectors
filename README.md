@@ -22,9 +22,9 @@ https://www.desmos.com/calculator/u8wt5rnw9n
 **Finished features**
 - **Add vectors in 2d**
 - **Subtract vectors in 2d**
-- **Absolut value of a vector**
-- **Print vectors with/without precision parameter**
-
+- **Absolut value of a vector in 2d**
+- **Print 2d vectors with/without precision parameter**
+- **Dot product 2d**
+  
 **Not finished**
-- **Dot product**
-- **Cross product**
+- **Cross product in 3d**
