@@ -12,6 +12,7 @@ int main(void) {
   print_vector2d(sum_vec);
   print_vector2d(diff_vec);
 
+
   print_vector2d_p(diff_vec, 3);
 
   printf("%f", absolut_value_2d(&vec_a));
