@@ -1,5 +1,10 @@
 #include "Vector.h"
 
+//abs = sqrt(a^2 + b^2)
+double absolut_value_2d(Vector2d *vec) {
+  return sqrt((vec->x * vec->x) + (vec->y * vec->y));
+}
+
 Vector2d v_add(Vector2d* vec_a, Vector2d* vec_b) {
   Vector2d temp_vec;
   temp_vec.x = vec_a->x + vec_b->x;

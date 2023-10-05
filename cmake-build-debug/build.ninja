@@ -49,23 +49,23 @@ cmake_ninja_workdir = C$:/Users/vlada/CLionProjects/LinkedList_C/cmake-build-deb
 
 build cmake_object_order_depends_target_LinkedList_C: phony || CMakeFiles/LinkedList_C.dir
 
-build CMakeFiles/LinkedList_C.dir/main.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/main.c || cmake_object_order_depends_target_LinkedList_C
-  DEP_FILE = CMakeFiles\LinkedList_C.dir\main.c.obj.d
+build CMakeFiles/LinkedList_C.dir/src/main.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/src/main.c || cmake_object_order_depends_target_LinkedList_C
+  DEP_FILE = CMakeFiles\LinkedList_C.dir\src\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\LinkedList_C.dir
-  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir\src
 
-build CMakeFiles/LinkedList_C.dir/Linked_List.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/Linked_List.c || cmake_object_order_depends_target_LinkedList_C
-  DEP_FILE = CMakeFiles\LinkedList_C.dir\Linked_List.c.obj.d
+build CMakeFiles/LinkedList_C.dir/src/Linked_List.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/src/Linked_List.c || cmake_object_order_depends_target_LinkedList_C
+  DEP_FILE = CMakeFiles\LinkedList_C.dir\src\Linked_List.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\LinkedList_C.dir
-  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir\src
 
-build CMakeFiles/LinkedList_C.dir/Vector.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/Vector.c || cmake_object_order_depends_target_LinkedList_C
-  DEP_FILE = CMakeFiles\LinkedList_C.dir\Vector.c.obj.d
+build CMakeFiles/LinkedList_C.dir/src/Vector.c.obj: C_COMPILER__LinkedList_C_unscanned_Debug C$:/Users/vlada/CLionProjects/LinkedList_C/src/Vector.c || cmake_object_order_depends_target_LinkedList_C
+  DEP_FILE = CMakeFiles\LinkedList_C.dir\src\Vector.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\LinkedList_C.dir
-  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\LinkedList_C.dir\src
 
 
 # =============================================================================
@@ -75,7 +75,7 @@ build CMakeFiles/LinkedList_C.dir/Vector.c.obj: C_COMPILER__LinkedList_C_unscann
 #############################################
 # Link the executable LinkedList_C.exe
 
-build LinkedList_C.exe: C_EXECUTABLE_LINKER__LinkedList_C_Debug CMakeFiles/LinkedList_C.dir/main.c.obj CMakeFiles/LinkedList_C.dir/Linked_List.c.obj CMakeFiles/LinkedList_C.dir/Vector.c.obj
+build LinkedList_C.exe: C_EXECUTABLE_LINKER__LinkedList_C_Debug CMakeFiles/LinkedList_C.dir/src/main.c.obj CMakeFiles/LinkedList_C.dir/src/Linked_List.c.obj CMakeFiles/LinkedList_C.dir/src/Vector.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\LinkedList_C.dir

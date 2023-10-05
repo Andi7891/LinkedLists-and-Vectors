@@ -11,6 +11,8 @@ int main(void) {
   Vector2d diff_vec = v_subtract(&vec_a, &vec_b);
   print_vector2d(sum_vec);
   print_vector2d(diff_vec);
+
+  printf("%f", absolut_value_2d(&vec_a));
   return EXIT_SUCCESS;
 }
 #endif
