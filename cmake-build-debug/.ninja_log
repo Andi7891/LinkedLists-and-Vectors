@@ -1,9 +1,0 @@
-# ninja log v5
-3	82	7182050876155429	CMakeFiles/LinkedList_C.dir/main.c.obj	50a8496871c9d5cf
-83	162	7182050876933298	LinkedList_C.exe	6876c18d88ff78a0
-8	95	7182049052759752	CMakeFiles/LinkedList_C.dir/Vector.c.obj	73aec1530e2c610b
-8	93	7182050781569683	CMakeFiles/LinkedList_C.dir/Linked_List.c.obj	71f01fe3bf4397b2
-1	120	7182076845767240	CMakeFiles/LinkedList_C.dir/src/main.c.obj	31a5db078b831de6
-12	121	7182076845767240	CMakeFiles/LinkedList_C.dir/src/Vector.c.obj	97c8a20979470275
-7	122	7182076845787186	CMakeFiles/LinkedList_C.dir/src/Linked_List.c.obj	ca83b1bbe4ee69be
-122	218	7182076846695362	LinkedList_C.exe	20298ee9f7e375db
