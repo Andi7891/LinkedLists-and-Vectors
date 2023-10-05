@@ -1,8 +1,8 @@
 //With the macro below you can choose which library to test. (VECTOR/LINKED_LIST)
-#define VECTOR
+#define LINKED_LIST
 
 //Macro for enabling testing
-#define TEST
+//#define TEST
 
 #ifdef VECTOR
 #include "Vector.h"
@@ -52,7 +52,7 @@ int main(void) {
   print_linked_list(head_node);
 
   //printf("############REVERSED###########\n");
-
+  //Not functional.
   //reverse_linked_list(&head_node);
 
   //print_linked_list(head_node);

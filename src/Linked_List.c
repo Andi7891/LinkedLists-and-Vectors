@@ -2,6 +2,11 @@
 
 //Get the last node ptr.
 Node *get_last_node(Node *head_ptr) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  //Assert is used when the program cannot continue because of an error considered impossible to recover from.
+  assert(head_ptr != nullptr);
+
   Node *current_node = head_ptr;
   while (current_node->next_ptr != nullptr) current_node = current_node->next_ptr;
   return current_node;
@@ -52,6 +57,11 @@ void generate_link_list(Node **head_ptr, size_t number_of_nodes) {
 
 //This function prints the entire list.
 void print_linked_list(Node *head_ptr) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  //Assert is used when the program cannot continue because of an error considered impossible to recover from.
+  assert(head_ptr != nullptr);
+
   Node *current_node = head_ptr;
   do {
     printf("Address currentNode: %p Address prevNode: %p Address nextNode: %p Content: %f\n",
@@ -66,7 +76,7 @@ void print_linked_list(Node *head_ptr) {
 
 
 /*
- * This function modifies content in a specified node.
+ * This function modifies the content in a specified node.
  * Return values is used to evaluate the success of the operation.
  * The function returns true if succeeded and false if not.
  */
@@ -80,10 +90,10 @@ bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value) 
   size_t iteration_index = 0;
   do {
     //Check if our current node is the desired one.
+    //Otherwise, set the current node with the next one.
     if (iteration_index == destination_node) {
       current_node->content = new_value;
       return true; //Return success.
-      //Otherwise, set the current node with the next one.
     } else {
       current_node = current_node->next_ptr;
       iteration_index++;
@@ -92,20 +102,58 @@ bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value) 
   //If no element with the requested position was found just return failed operation.
   return false;
 }
-
+//Not functional.
 //This function reverses the linked list, it needs only the head_ptr.
 //The function is not expected to fail, thus no return value.
+//If the head_ptr is null the assert macro will terminate the program.
 void reverse_linked_list(Node **head_ptr) {
+  //Exit if the head_ptr is null.
+  assert((*head_ptr) != nullptr);
+
   Node *last_node = get_last_node(*head_ptr);
+  Node *head_node = (*head_ptr);
+
   Node *current_node = last_node;
 
-  Node *next_node = nullptr;
+  //Switch between last and head node
+  (*head_ptr) = last_node;
 
-  //Reverses the list from the end to the beginning.
+  Node* temp_ptr = nullptr;
   while (current_node->next_ptr != nullptr) {
-    next_node = current_node->next_ptr;
-    current_node->next_ptr = current_node->prev_ptr;
-    current_node->prev_ptr = next_node;
+    temp_ptr = current_node->prev_ptr;
+    current_node->prev_ptr = current_node->next_ptr;
+    current_node->next_ptr = temp_ptr;
+    current_node = current_node->next_ptr;
   }
-  (*head_ptr) = next_node;
+  (*head_ptr)->next_ptr = current_node;
+  (*head_ptr)->prev_ptr = nullptr;
+}
+
+/*
+ * This function get the content in a specified node.
+ * Return values is used to evaluate the success of the operation.
+ * The function returns true if succeeded and false if not.
+ * !!!The result is passed through the value pointer, not the return value of the function.
+ */
+bool get_value_at(Node *head_ptr, size_t destination_node, double* value) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  if (head_ptr == nullptr) return false;
+
+  Node *current_node = head_ptr;
+
+  size_t iteration_index = 0;
+  do {
+    //Check if our current node is the desired one.
+    if (iteration_index == destination_node) {
+      *value = current_node->content;
+      return true;
+      //Otherwise, set the current node with the next one.
+    } else {
+      current_node = current_node->next_ptr;
+      iteration_index++;
+    }
+  } while (current_node != nullptr);
+  //If no element with the requested position was found just return failed operation.
+  return false;
 }

@@ -12,7 +12,7 @@
 #include <stdio.h> //Used for printf.
 #include <stdlib.h> //Used for malloc.
 #include <stdbool.h> //Used for true/false macros and bool type.
-
+#include <assert.h> //Exit program in case of a critical error.
 /*
  * Conventions:
  * 1.We could use (?) when we are not sure about something, or (??) if there is a better word, but we don't know which one.
@@ -55,3 +55,5 @@ bool modify_value_at(Node *head_ptr, size_t destination_node, double new_value);
 //This function reverses the linked list, it needs only the head_ptr.
 //The function is not expected to fail, thus no return value.
 void reverse_linked_list(Node **head_ptr);
+
+bool get_value_at(Node *head_ptr, size_t destination_node, double* value);
