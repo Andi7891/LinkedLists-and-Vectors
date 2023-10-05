@@ -1,3 +1,0 @@
-C:/Users/vlada/CLionProjects/LinkedList_C/cmake-build-debug/CMakeFiles/LinkedList_C.dir
-C:/Users/vlada/CLionProjects/LinkedList_C/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/vlada/CLionProjects/LinkedList_C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
