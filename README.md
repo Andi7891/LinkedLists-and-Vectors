@@ -2,9 +2,10 @@
 
 **Finished features**
 - **Generate linked list**
-- **Modify element**
+- **Modify value at**
+- **Get value at**
 - **Print list**
-
+  
 **Not finished**
 - **Reverse linked list**
 
