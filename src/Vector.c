@@ -19,6 +19,16 @@ Vector2d v_subtract(Vector2d* vec_a, Vector2d* vec_b) {
   return temp_vec;
 }
 
+double v_dot(Vector2d* vec_a, Vector2d* vec_b) {
+  return vec_a->x * vec_b->x + vec_a->y * vec_b->y;
+}
+
+//Not done yet
+Vector3d v_cross(Vector3d* vec_a, Vector3d* vec_b) {
+  Vector3d temp_vec = {.x = 0.f, .y = 0.f, .z = 0.f};
+  return temp_vec;
+}
+
 void print_vector2d(Vector2d vec) {
   printf("Vector content: x=%f, y=%f\n", vec.x, vec.y);
 }

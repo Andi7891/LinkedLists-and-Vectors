@@ -1,21 +1,42 @@
 //With the macro below you can choose which library to test. (VECTOR/LINKED_LIST)
 #define VECTOR
 
+//Macro for enabling testing
+#define TEST
+
 #ifdef VECTOR
 #include "Vector.h"
 
 int main(void) {
-  Vector2d vec_a = {.x = 1.f, .y = 2.f};
-  Vector2d vec_b = {.x = 2.f, .y = 3.f};
+
+#ifdef TEST
+  Vector2d vec_a = {.x = 5.f, .y = 1.f};
+  Vector2d vec_b = {.x = 4.f, .y = 3.f};
+
   Vector2d sum_vec = v_add(&vec_a, &vec_b);
+  if ((sum_vec.x == 9.f) && (sum_vec.y == 4.f))
+    printf("Addition succeeded\n");
+  else
+    printf("Addition failed\n");
+
   Vector2d diff_vec = v_subtract(&vec_a, &vec_b);
-  print_vector2d(sum_vec);
-  print_vector2d(diff_vec);
+  if ((diff_vec.x == 1.f) && (diff_vec.y == -2.f))
+    printf("Subtraction succeeded\n");
+  else
+    printf("Subtraction failed\n");
 
+  if (absolut_value_2d(&vec_a) == sqrt(26))
+    printf("Absolut value succeeded\n");
+  else
+    printf("Absolut value failed\n");
 
-  print_vector2d_p(diff_vec, 3);
+  if (v_dot(&vec_a, &vec_b) == 23)
+    printf("Dot product succeeded\n");
+  else
+    printf("Dot product failed\n");
 
-  printf("%f", absolut_value_2d(&vec_a));
+#endif
+
   return EXIT_SUCCESS;
 }
 #endif
