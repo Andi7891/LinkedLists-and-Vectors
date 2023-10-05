@@ -13,3 +13,7 @@
 
 # Doubly Linked List #
 ![Layout](Doubly-Linked-List.png)
+
+# Vector structure implemented in C #
+
+https://www.desmos.com/calculator/u8wt5rnw9n
