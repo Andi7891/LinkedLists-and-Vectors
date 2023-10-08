@@ -10,5 +10,7 @@ include_directories(vendors/sdl2/include)
 #include_directories(vendors/sdl_image)
 link_directories(vendors/sdl2/lib)
 
-add_executable(Vector_Visualizer src/main.cpp)
+add_executable(Vector_Visualizer src/main.cpp
+        src/App.cpp
+        src/App.h)
 target_link_libraries(Vector_Visualizer SDL2main SDL2 )
