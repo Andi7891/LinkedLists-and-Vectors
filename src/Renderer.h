@@ -23,9 +23,9 @@ class Renderer {
  Renderer(SDL_Window* window, bool vsync);
   ~Renderer();
 
-  void new_frame(SDL_Color clear_buffer_color, Vector2d<int> window_size);
-  void draw_frame(void (*fun)(SDL_Renderer *, Vector2d<int>), Vector2d<int> window_size);
-  void render_frame();
+  void new_frame(SDL_Color clear_buffer_color, Vector2d<int> window_size) const;
+  void draw_frame(void (*fun)(SDL_Renderer *, Vector2d<int>), Vector2d<int> window_size) const;
+  void render_frame() const;
 };
 }
 

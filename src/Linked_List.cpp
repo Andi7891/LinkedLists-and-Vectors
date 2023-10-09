@@ -1,5 +1,5 @@
 #include "Linked_List.h"
-
+#ifdef REMOVE
 //Get the last node ptr.
 Node *get_last_node(Node *head_ptr) {
   //Check if there is a linked list in the first place :).
@@ -157,3 +157,4 @@ bool get_value_at(Node *head_ptr, size_t destination_node, double* value) {
   //If no element with the requested position was found just return failed operation.
   return false;
 }
+#endif

@@ -62,16 +62,16 @@ Renderer::Renderer::~Renderer() {
   m_sdl_renderer = nullptr;
 }
 
-void Renderer::Renderer::new_frame(SDL_Color clear_buffer_color, Vector2d<int> window_size) {
+void Renderer::Renderer::new_frame(SDL_Color clear_buffer_color, Vector2d<int> window_size) const {
   SDL_SetRenderDrawColor(m_sdl_renderer, clear_buffer_color.r, clear_buffer_color.g,
                                              clear_buffer_color.b, clear_buffer_color.a);
   SDL_RenderClear(m_sdl_renderer);
   draw_grid(m_sdl_renderer, window_size, white_color);
 }
-void Renderer::Renderer::draw_frame(void (*fun)(SDL_Renderer *, Vector2d<int>), Vector2d<int> window_size) {
+void Renderer::Renderer::draw_frame(void (*fun)(SDL_Renderer *, Vector2d<int>), Vector2d<int> window_size) const {
   fun(m_sdl_renderer, window_size);
 }
-void Renderer::Renderer::render_frame() {
+void Renderer::Renderer::render_frame() const {
   SDL_RenderPresent(m_sdl_renderer);
 }
 }

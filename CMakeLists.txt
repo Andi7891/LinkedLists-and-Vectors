@@ -14,5 +14,7 @@ add_executable(Vector_Visualizer src/main.cpp
         src/App.cpp
         src/App.h
         src/Renderer.cpp
-        src/Renderer.h)
+        src/Renderer.h
+        src/Linked_List.cpp
+        src/Linked_List.h)
 target_link_libraries(Vector_Visualizer SDL2main SDL2 )

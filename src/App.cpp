@@ -13,11 +13,8 @@ App::App(App_Specs &specs) : m_window_title(specs.window_title),
                              running(false),
                              m_window(nullptr),
                              m_renderer(nullptr),
-                             m_window_center(),
                              m_window_flags(),
                              m_event() {
-  m_window_center = {(m_window_size.x / 2), (m_window_size.y / 2)};
-
   if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) printf("ErrorInitialization: %s", SDL_GetError());
 
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
@@ -27,9 +24,6 @@ App::App(App_Specs &specs) : m_window_title(specs.window_title),
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
   SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-  //SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-  //SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
-  //SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 }
 
 void App::init(SDL_WindowFlags window_flags, bool vsync) {
@@ -45,7 +39,7 @@ void App::init(SDL_WindowFlags window_flags, bool vsync) {
   if (m_window == nullptr)
     printf("ErrorWindow: %s", SDL_GetError());
 
-  m_renderer = new Renderer::Renderer(m_window, true);
+  m_renderer = new Renderer::Renderer(m_window, vsync);
 
   running = true;
 }
@@ -54,7 +48,7 @@ void App::process_events() {
   while (SDL_PollEvent(&m_event)) {
     if (m_event.type == SDL_QUIT ||
         m_event.key.keysym.sym == SDL_KeyCode::SDLK_ESCAPE) {
-        running = false;
+      running = false;
     }
   }
 }

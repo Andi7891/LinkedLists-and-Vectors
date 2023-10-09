@@ -1,4 +1,5 @@
 #include "App.h"
+#include "Linked_List.h"
 
 void draw_content(SDL_Renderer *renderer, Vector2d<int> window_size) {
   SDL_Color red_color = {255, 0, 0, 255};
@@ -8,6 +9,7 @@ void draw_content(SDL_Renderer *renderer, Vector2d<int> window_size) {
 
   Vector2d<int> window_center = {window_size.x / 2, window_size.y / 2};
 
+  //Create an add node function and use the linked list as a way of storing vectors.
   Renderer::Vector vec_a = {{0, 0}, {2, 3}};
   Renderer::Vector vec_b = {{0, 0}, {3, 1}};
   Renderer::Vector vec_s = Renderer::add_position_vector(vec_a, vec_b);

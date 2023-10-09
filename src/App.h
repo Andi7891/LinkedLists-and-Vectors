@@ -20,7 +20,6 @@ class App {
   const char* m_window_title;
 
   SDL_Window* m_window;
-  Vector2d<int> m_window_center;
   SDL_WindowFlags m_window_flags;
 
   Renderer::Renderer* m_renderer;
