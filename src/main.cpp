@@ -1,39 +1,20 @@
 #include "App.h"
 
-SDL_Color red_color = {255, 0, 0, 255};
-SDL_Color green_color = {0, 255, 0, 255};
-SDL_Color blue_color = {0, 0, 255, 255};
+void draw_content(SDL_Renderer *renderer, Vector2d<int> window_size) {
+  SDL_Color red_color = {255, 0, 0, 255};
+  SDL_Color green_color = {0, 255, 0, 255};
+  SDL_Color blue_color = {0, 0, 255, 255};
+  SDL_Color white_color = {255, 255, 255, 255};
 
-struct Vector {
-  SDL_Point tail;
-  SDL_Point head;
-};
+  Vector2d<int> window_center = {window_size.x / 2, window_size.y / 2};
 
-void draw_vector(SDL_Renderer *renderer, Vector2d window_center, Vector &vec, SDL_Color &color) {
-  int scale = 20;
-  SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-  SDL_RenderDrawLine(renderer,
-                     (int)window_center.x + vec.tail.x * scale,
-                     (int)window_center.y - vec.tail.y * scale,
-                     (int)window_center.x + vec.head.x * scale,
-                     (int)window_center.y - vec.head.y * scale);
-}
+  Renderer::Vector vec_a = {{0, 0}, {2, 3}};
+  Renderer::Vector vec_b = {{0, 0}, {3, 1}};
+  Renderer::Vector vec_s = Renderer::add_position_vector(vec_a, vec_b);
 
-Vector add_v(Vector vec_a, Vector vec_b) {
-  auto temp = Vector{vec_a.tail,
-                     (SDL_Point) {vec_a.head.x + vec_b.head.x,
-                                  vec_a.head.y + vec_b.head.y}};
-  return temp;
-}
-
-void draw_content(SDL_Renderer *renderer, const Vector2d* window_center) {
-  Vector vec_a = {(SDL_Point) {0, 0}, (SDL_Point) {2, 3}};
-  Vector vec_b = {(SDL_Point) {0, 0}, (SDL_Point) {3, 3}};
-  Vector vec_s = add_v(vec_a, vec_b);
-
-  draw_vector(renderer, *window_center, vec_a, red_color);
-  draw_vector(renderer, *window_center, vec_b, green_color);
-  draw_vector(renderer, *window_center, vec_s, blue_color);
+  Renderer::draw_position_vector(renderer, window_center, vec_a, red_color);
+  Renderer::draw_position_vector(renderer, window_center, vec_b, green_color);
+  Renderer::draw_position_vector(renderer, window_center, vec_s, blue_color);
 }
 
 int main(int argc, char **argv) {

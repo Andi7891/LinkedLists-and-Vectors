@@ -12,5 +12,7 @@ link_directories(vendors/sdl2/lib)
 
 add_executable(Vector_Visualizer src/main.cpp
         src/App.cpp
-        src/App.h)
+        src/App.h
+        src/Renderer.cpp
+        src/Renderer.h)
 target_link_libraries(Vector_Visualizer SDL2main SDL2 )

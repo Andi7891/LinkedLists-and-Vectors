@@ -5,24 +5,25 @@
 
 #include "SDL/SDL.h"
 #include "Vector.h"
+#include "Renderer.h"
 
 namespace App {
 
 struct App_Specs {
-  Vector2d window_size;
+  Vector2d<int> window_size;
   const char* window_title;
 };
 
 class App {
  private:
-  Vector2d m_window_size;
+  Vector2d<int> m_window_size;
   const char* m_window_title;
 
   SDL_Window* m_window;
-  Vector2d m_window_center;
+  Vector2d<int> m_window_center;
   SDL_WindowFlags m_window_flags;
 
-  SDL_Renderer* m_renderer;
+  Renderer::Renderer* m_renderer;
 
   SDL_Event m_event;
  public:
@@ -34,7 +35,7 @@ class App {
   void init(SDL_WindowFlags window_flags, bool vsync);
   void process_events();
   void update();
-  void draw(void(*fun)(SDL_Renderer *, const Vector2d *));
+  void draw(void (*p_function)(SDL_Renderer *, Vector2d<int>));
   void exit();
 };
 
