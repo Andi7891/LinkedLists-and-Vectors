@@ -25,8 +25,8 @@ class App {
   Renderer::Renderer* m_renderer;
 
   SDL_Event m_event;
+  bool m_running;
  public:
-  bool running;
 
   explicit App(App_Specs& specs);
   ~App() = default;
@@ -34,8 +34,11 @@ class App {
   void init(SDL_WindowFlags window_flags, bool vsync);
   void process_events();
   void update();
-  void draw(void (*p_function)(SDL_Renderer *, Vector2d<int>));
+  void draw();
   void exit();
+
+  [[nodiscard]] bool get_running_status() const;
+  [[nodiscard]] Renderer::Node** get_entity_list() const;
 };
 
 }

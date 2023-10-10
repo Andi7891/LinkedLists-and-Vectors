@@ -44,8 +44,48 @@ Vector add_position_vector(Vector vec_a, Vector vec_b) {
                                        vec_a.head.y + vec_b.head.y}};
   return temp;
 }
+void delete_list(Node *head_ptr) {
+  if (head_ptr == nullptr) return;
+  Node* current_ptr = head_ptr;
+  Node* next_ptr = nullptr;
 
-Renderer::Renderer::Renderer(SDL_Window *window, bool vsync) {
+  while(current_ptr != nullptr) {
+    next_ptr = current_ptr->next_ptr;
+    delete current_ptr;
+    current_ptr = next_ptr;
+  }
+}
+void add_element(Node *head_ptr, Vector element) {
+  auto* new_node = (Node*)nullptr;
+
+  if (head_ptr == nullptr) {
+    head_ptr = new Node;
+    head_ptr->prev_ptr = nullptr;
+    new_node = head_ptr;
+  }
+  else {
+    new_node = new Node;
+  }
+
+  new_node->next_ptr = nullptr;
+  new_node->content = element;
+
+  auto* last_node = get_last_node(head_ptr);
+  last_node->next_ptr = new_node;
+  new_node->prev_ptr = last_node;
+}
+Node *get_last_node(Node *head_ptr) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  //Assert is used when the program cannot continue because of an error considered impossible to recover from.
+  assert(head_ptr != nullptr);
+
+  Node *current_node = head_ptr;
+  while (current_node->next_ptr != nullptr) current_node = current_node->next_ptr;
+  return current_node;
+}
+
+Renderer::Renderer::Renderer(SDL_Window *window, bool vsync) : render_vector_list {nullptr} {
   m_sdl_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   if (m_sdl_renderer == nullptr)
     SDL_Log("ErrorRenderer: %s", SDL_GetError());
@@ -58,6 +98,7 @@ Renderer::Renderer::Renderer(SDL_Window *window, bool vsync) {
 }
 
 Renderer::Renderer::~Renderer() {
+  delete_list(render_vector_list);
   SDL_DestroyRenderer(m_sdl_renderer);
   m_sdl_renderer = nullptr;
 }
@@ -68,8 +109,15 @@ void Renderer::Renderer::new_frame(SDL_Color clear_buffer_color, Vector2d<int> w
   SDL_RenderClear(m_sdl_renderer);
   draw_grid(m_sdl_renderer, window_size, white_color);
 }
-void Renderer::Renderer::draw_frame(void (*fun)(SDL_Renderer *, Vector2d<int>), Vector2d<int> window_size) const {
-  fun(m_sdl_renderer, window_size);
+void Renderer::Renderer::draw_frame(Vector2d<int> window_size) const {
+  //fun(m_sdl_renderer, window_size);
+  Vector2d<int> window_center = {window_size.x / 2, window_size.y / 2};
+  Node* current_ptr = render_vector_list;
+  while (render_vector_list != nullptr) {
+    printf("%f %f\n", current_ptr->content.head.x, current_ptr->content.head.y);
+    draw_position_vector(m_sdl_renderer, window_center, current_ptr->content, white_color);
+    current_ptr = current_ptr->next_ptr;
+  }
 }
 void Renderer::Renderer::render_frame() const {
   SDL_RenderPresent(m_sdl_renderer);

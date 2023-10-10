@@ -10,7 +10,7 @@ SDL_Color white_color = {255, 255, 255, 255};
 
 App::App(App_Specs &specs) : m_window_title(specs.window_title),
                              m_window_size(specs.window_size),
-                             running(false),
+                             m_running(false),
                              m_window(nullptr),
                              m_renderer(nullptr),
                              m_window_flags(),
@@ -41,14 +41,14 @@ void App::init(SDL_WindowFlags window_flags, bool vsync) {
 
   m_renderer = new Renderer::Renderer(m_window, vsync);
 
-  running = true;
+  m_running = true;
 }
 
 void App::process_events() {
   while (SDL_PollEvent(&m_event)) {
     if (m_event.type == SDL_QUIT ||
         m_event.key.keysym.sym == SDL_KeyCode::SDLK_ESCAPE) {
-      running = false;
+      m_running = false;
     }
   }
 }
@@ -62,11 +62,18 @@ void App::exit() {
 void App::update() {
 
 }
+bool App::get_running_status() const {
+  return m_running;
+}
 
-void App::draw(void (*p_function)(SDL_Renderer *, Vector2d<int>)) {
+void App::draw() {
   m_renderer->new_frame(black_color, m_window_size);
-  m_renderer->draw_frame(p_function, m_window_size);
+  m_renderer->draw_frame(m_window_size);
   m_renderer->render_frame();
+}
+Renderer::Node** App::get_entity_list() const {
+  auto list = &(this->m_renderer->render_vector_list);
+  return list;
 }
 
 }

@@ -9,9 +9,11 @@
 
 //I will add many comments, so everyone could understand the idea behind of each line.
 
+#ifdef MACRO
 #include <cstdio> //Used for printf.
 #include <cstdlib> //Used for malloc.
 #include <cassert> //Exit program in case of a critical error.
+
 /*
  * Conventions:
  * 1.We could use (?) when we are not sure about something, or (??) if there is a better word, but we don't know which one.
@@ -34,6 +36,77 @@ struct Node {
   Node *next_ptr;
   Node *prev_ptr;
 };
+
+//Get the last node ptr.
+template<typename T>
+Node<T> *get_last_node(Node<T> *head_ptr) {
+  //Check if there is a linked list in the first place :).
+  //You can't assume that there will be always a linked list.
+  //Assert is used when the program cannot continue because of an error considered impossible to recover from.
+  assert(head_ptr != nullptr);
+
+  Node<T> *current_node = head_ptr;
+  while (current_node->next_ptr != nullptr) current_node = current_node->next_ptr;
+  return current_node;
+}
+
+/*
+ *
+template<typename T>
+void add_element(Node<T>* head_ptr, T element) {
+  auto* new_node = (Node<T>*)nullptr;
+
+  if (head_ptr == nullptr) {
+    head_ptr = new Node<T>;
+    head_ptr->prev_ptr = nullptr;
+    new_node = head_ptr;
+  }
+  else {
+    new_node = new Node<T>;
+  }
+
+  new_node->next_ptr = nullptr;
+  new_node->content = element;
+
+  auto* last_node = get_last_node(head_ptr);
+  last_node->next_ptr = new_node;
+  new_node->prev_ptr = last_node;
+}
+*/
+
+void add_element(Node<Renderer::Vector>* head_ptr, Renderer::Vector element) {
+  auto* new_node = (Node<Renderer::Vector>*)nullptr;
+
+  if (head_ptr == nullptr) {
+    head_ptr = new Node<Renderer::Vector>;
+    head_ptr->prev_ptr = nullptr;
+    new_node = head_ptr;
+  }
+  else {
+    new_node = new Node<Renderer::Vector>;
+  }
+
+  new_node->next_ptr = nullptr;
+  new_node->content = element;
+
+  auto* last_node = get_last_node(head_ptr);
+  last_node->next_ptr = new_node;
+  new_node->prev_ptr = last_node;
+}
+
+//Not implemented yet.
+template<typename T>
+void delete_list(Node<T>* head_ptr) {
+  if (head_ptr == nullptr) return;
+  Node<T>* current_ptr = head_ptr;
+  Node<T>* next_ptr = nullptr;
+
+  while(current_ptr != nullptr) {
+    next_ptr = current_ptr->next_ptr;
+    delete current_ptr;
+    current_ptr = next_ptr;
+  }
+}
 
 #ifdef REMOVE
 //Get the last node ptr.
@@ -112,4 +185,5 @@ void reverse_linked_list(Node<T> **head_ptr);
 
 template<typename T>
 bool get_value_at(Node<T> *head_ptr, size_t destination_node, double* value);
+#endif
 #endif
