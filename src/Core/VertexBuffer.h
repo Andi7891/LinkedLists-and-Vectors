@@ -1,0 +1,12 @@
+#ifndef VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXBUFFER_H_
+#define VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXBUFFER_H_
+
+namespace VertexBuffer {
+
+class VertexBuffer {
+
+};
+
+} // VertexBuffer
+
+#endif //VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXBUFFER_H_

@@ -1,0 +1,12 @@
+#ifndef VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXARRAYBUFFER_H_
+#define VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXARRAYBUFFER_H_
+
+namespace VertexArrayBuffer {
+
+class VertexArrayBuffer {
+
+};
+
+} // VertexArrayBuffer
+
+#endif //VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXARRAYBUFFER_H_
