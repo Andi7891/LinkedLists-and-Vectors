@@ -1,4 +1,6 @@
 #include "Engine_Core.h"
+#include "Shaders/vertex_default_shader.shader"
+#include "Shaders/fragment_default_shader.shader"
 
 namespace Engine_Core {
 
@@ -51,8 +53,8 @@ void Engine::init() {
     std::exit(-3);
   }
 
-  auto glew_init_result = glewInit();
-
+  glewExperimental = GL_TRUE;
+  GLenum glew_init_result = glewInit();
   if (glew_init_result != GLEW_OK) {
     SDL_LogCritical(SDL_LOG_PRIORITY_CRITICAL, "%s\n", glewGetErrorString(glewInit()));
     std::exit(-4);
@@ -68,9 +70,25 @@ void Engine::init() {
     SDL_GL_SetSwapInterval(0); //No sync.
   }
 
+  // tell GL to only draw onto a pixel if the shape is closer to the viewer
+  glEnable(GL_DEPTH_TEST); // enable depth-testing
+  glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
+
   ON_DEBUG(SDL_Log("OpenGL %s\nGLSL %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
   ON_DEBUG(SDL_Log("Vsync status %d\n", SDL_GL_GetSwapInterval()));
+
+  GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+  glShaderSource(vs, 1, &vertex_shader, nullptr);
+  glCompileShader(vs);
+  GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fs, 1, &fragment_shader, nullptr);
+  glCompileShader(fs);
+
+  m_shader_programme = glCreateProgram();
+  glAttachShader(m_shader_programme, fs);
+  glAttachShader(m_shader_programme, vs);
+  glLinkProgram(m_shader_programme);
 
   m_running = true;
 }
@@ -87,7 +105,32 @@ void Engine::update() {
 
 }
 void Engine::draw() {
+  glClearColor(0, 0, 0, 255);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glUseProgram(m_shader_programme);
 
+  //DEMO TRIANGLE
+  float points[] = {
+      0.0f,  0.5f,  0.0f,
+      0.5f, -0.5f,  0.0f,
+      -0.5f, -0.5f,  0.0f
+  };
+
+  GLuint vbo = 0;
+  glGenBuffers(1, &vbo);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), points, GL_STATIC_DRAW);
+
+  GLuint vao = 0;
+  glGenVertexArrays(1, &vao);
+  glBindVertexArray(vao);
+  glEnableVertexAttribArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+
+  glDrawArrays(GL_TRIANGLES, 0, 3);
+
+  SDL_GL_SwapWindow(m_window);
   //Vsync
   if (m_vsync) {
     m_currentTick = SDL_GetTicks();

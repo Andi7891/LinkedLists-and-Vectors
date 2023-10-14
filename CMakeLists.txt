@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 project(Vector_Visualizer_3D)
 
 set(CMAKE_CXX_STANDARD 17)
-
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../build)
 
 include_directories(src)

@@ -4,8 +4,12 @@
 #include "SDL/SDL.h"
 #include "GL/glew.h"
 
+#include "VertexBuffer.h"
+#include "VertexArrayBuffer.h"
+
 namespace Engine_Core {
 #define DEBUG
+
 #include "Engine_Core_Utils.h"
 
 class Engine {
@@ -32,6 +36,7 @@ class Engine {
 
   bool m_running;
   bool m_vsync;
+  GLuint m_shader_programme{};
 
   //Vsync
   const int m_FPS = 24;

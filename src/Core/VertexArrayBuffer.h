@@ -2,9 +2,19 @@
 #define VECTOR_VISUALIZER_3D_SRC_CORE_VERTEXARRAYBUFFER_H_
 
 namespace VertexArrayBuffer {
+#include "GL/glew.h"
 
-class VertexArrayBuffer {
+class vao {
+ public:
+  explicit vao(int n_buffers);
+  ~vao() = default;
 
+  void Bind() const;
+  void UnBind() const;
+
+  void setData();
+ private:
+  GLuint m_vao_id;
 };
 
 } // VertexArrayBuffer
