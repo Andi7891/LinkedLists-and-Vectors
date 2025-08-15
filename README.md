@@ -1,4 +1,4 @@
-## Through this project, I learned how to design and implement fundamental data structures, including linked lists and vectors.
+## Through this project, I learned how to design and implement fundamental data structures, including linked lists and mathematical vectors.
 
 # Linked List implemented in C #
 
