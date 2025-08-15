@@ -1,3 +1,5 @@
+## Through this project, I learned how to design and implement fundamental data structures, including linked lists and vectors.
+
 # Linked List implemented in C #
 
 **Finished features**
@@ -14,6 +16,8 @@
 
 # Doubly Linked List #
 ![Layout](Doubly-Linked-List.png)
+
+---
 
 # Vector structure implemented in C #
 
